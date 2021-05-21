@@ -3,7 +3,7 @@ Repository for the Udacity Data Streaming Nano Degree
 
 Link: [Udacity program page](https://www.udacity.com/course/data-streaming-nanodegree--nd029)
 
-
+Syllabus: [Program_Syllabus.pdf](./assets/Program_Syllabus.pdf)
 
 ## Objective
 
