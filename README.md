@@ -1,2 +1,2 @@
-# udacity-data-streaming-nano-degree
+# Udacity Data Streaming Nano Degree
 Repository for the Udacity Data Streaming Nano Degree
