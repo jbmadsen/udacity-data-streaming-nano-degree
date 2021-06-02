@@ -1,5 +1,3 @@
-# PLEASE COMPLETE THE TODO ITEMS IN THIS PYTHON CODE
-
 import asyncio
 
 from confluent_kafka import Consumer, Producer
