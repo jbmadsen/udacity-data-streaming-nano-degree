@@ -33,7 +33,7 @@ class ClickEvent:
     number: int = field(default_factory=lambda: random.randint(0, 999))
     attributes: dict = field(default_factory=ClickAttribute.attributes)
 
-    # TODO: Update this Avro schema to include a map of attributes
+    # Update this Avro schema to include a map of attributes
     # See: https://avro.apache.org/docs/1.8.2/spec.html#Maps
     schema = parse_schema(
         {
