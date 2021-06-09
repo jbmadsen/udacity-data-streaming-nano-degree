@@ -38,9 +38,13 @@ class Producer:
             # TODO: Host URL Lifted from Exercise 1.2 / Exercise 4.7
             "bootstrap.servers": "PLAINTEXT://localhost:9092",
             # TODO: Schema Registry From: https://docs.confluent.io/platform/current/schema-registry/connect.html
-            "schema.registry.url": "http://localhost:8081"
+            "schema.registry.url": "http://localhost:8081",
             # TODO: What is the last one? Something for the Avro Producer?
             # !FIXME
+            # Additional suggested configurations suggested in the learning material
+            "client.id": "public.transport.producer",
+            "message.send.max.retries": 1,
+            "enable.idempotence": False,
         }
 
         # If the topic does not already exist, try to create it
