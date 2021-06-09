@@ -35,11 +35,12 @@ class Producer:
         # and use the Host URL for Kafka and Schema Registry!
         # See: https://docs.confluent.io/current/clients/confluent-kafka-python/#producer
         self.broker_properties = {
-            # TODO: Host URL Lifted from Exercise 1.2
+            # TODO: Host URL Lifted from Exercise 1.2 / Exercise 4.7
             "bootstrap.servers": "PLAINTEXT://localhost:9092",
             # TODO: Schema Registry From: https://docs.confluent.io/platform/current/schema-registry/connect.html
             "schema.registry.url": "http://localhost:8081"
             # TODO: What is the last one? Something for the Avro Producer?
+            # !FIXME
         }
 
         # If the topic does not already exist, try to create it
@@ -48,31 +49,30 @@ class Producer:
             Producer.existing_topics.add(self.topic_name)
 
         # TODO: Configure the AvroProducer
+        # !FIXME
+        # Inspired from Exercise 4.7, and documentation
         # See: https://docs.confluent.io/platform/current/clients/confluent-kafka-python/html/index.html#avro-producer
-        # self.producer = AvroProducer(
-        # )
+        self.producer = AvroProducer(
+            self.broker_properties
+        )
 
     def create_topic(self):
         """Creates the producer topic if it does not already exist"""
-        #
-        #
-        # TODO: Write code that creates the topic for this producer if it does not already exist on
-        # the Kafka Broker.
-        #
-        #
-        logger.info("topic creation kafka integration incomplete - skipping")
+        
+        # TODO: Write code that creates the topic for this producer
+        # if it does not already exist on the Kafka Broker.
+        logger.info("topic creation kafka integration incomplete - skipping (TODO)")
+        # !FIXME
 
     def time_millis(self):
         return int(round(time.time() * 1000))
 
     def close(self):
         """Prepares the producer for exit by cleaning up the producer"""
-        #
-        #
+
         # TODO: Write cleanup code for the Producer here
-        #
-        #
-        logger.info("producer close incomplete - skipping")
+        logger.info("producer close incomplete - skipping (TODO)")
+        # !FIXME
 
     def time_millis(self):
         """Use this function to get the key for Kafka Events"""
