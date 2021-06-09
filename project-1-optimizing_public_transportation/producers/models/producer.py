@@ -31,16 +31,15 @@ class Producer:
         self.num_partitions = num_partitions
         self.num_replicas = num_replicas
 
-        #
-        #
         # TODO: Configure the broker properties below. Make sure to reference the project README
         # and use the Host URL for Kafka and Schema Registry!
-        #
-        #
+        # See: https://docs.confluent.io/current/clients/confluent-kafka-python/#producer
         self.broker_properties = {
-            # TODO
-            # TODO
-            # TODO
+            # TODO: Host URL Lifted from Exercise 1.2
+            "bootstrap.servers": "PLAINTEXT://localhost:9092",
+            # TODO: Schema Registry From: https://docs.confluent.io/platform/current/schema-registry/connect.html
+            "schema.registry.url": "http://localhost:8081"
+            # TODO: What is the last one? Something for the Avro Producer?
         }
 
         # If the topic does not already exist, try to create it
@@ -49,6 +48,7 @@ class Producer:
             Producer.existing_topics.add(self.topic_name)
 
         # TODO: Configure the AvroProducer
+        # See: https://docs.confluent.io/platform/current/clients/confluent-kafka-python/html/index.html#avro-producer
         # self.producer = AvroProducer(
         # )
 
