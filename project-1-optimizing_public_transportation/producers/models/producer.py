@@ -55,9 +55,11 @@ class Producer:
         # TODO: Configure the AvroProducer
         # !FIXME
         # Inspired from Exercise 4.7, and documentation
-        # See: https://docs.confluent.io/platform/current/clients/confluent-kafka-python/html/index.html#avro-producer
+        # See: https://docs.confluent.io/platform/current/clients/confluent-kafka-python/html/index.html#confluent_kafka.avro.AvroProducer
         self.producer = AvroProducer(
-            self.broker_properties
+            self.broker_properties,
+            default_key_schema=self.key_schema,
+            default_value_schema=self.value_schema
         )
 
     def create_topic(self):
