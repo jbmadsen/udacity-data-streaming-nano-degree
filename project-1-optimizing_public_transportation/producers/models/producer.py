@@ -105,9 +105,13 @@ class Producer:
         """Prepares the producer for exit by cleaning up the producer"""
 
         # TODO: Write cleanup code for the Producer here
-        logger.info("producer close incomplete - skipping (TODO)")
-        # !FIXME
+        # Inspired from: https://docs.confluent.io/platform/current/schema-registry/serdes-develop/serdes-avro.html
+        if self.producer is not None:
+            self.producer.flush()
+            #self.producer.close() # NOTE: Unsure about this, even though the function is called close, the comment suggest only to prepare for closing - i.e. flush()
 
     def time_millis(self):
         """Use this function to get the key for Kafka Events"""
+        # There are two of these functions in the provided template code. Accident?
         return int(round(time.time() * 1000))
+        
