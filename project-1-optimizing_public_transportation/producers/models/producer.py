@@ -65,8 +65,38 @@ class Producer:
         
         # TODO: Write code that creates the topic for this producer
         # if it does not already exist on the Kafka Broker.
-        logger.info("topic creation kafka integration incomplete - skipping (TODO)")
-        # !FIXME
+
+        # Lifted from exercise 2.4
+        bootstrap_servers = self.broker_properties["bootstrap.servers"]
+        client = AdminClient({"bootstrap.servers": bootstrap_servers})
+
+        # Check if topic already exists
+        # From: https://docs.confluent.io/platform/current/clients/confluent-kafka-python/html/index.html#confluent_kafka.Consumer.list_topics
+        existing_topics = client.list_topics(timeout=30)
+        if self.topic_name in existing_topics.topics:
+            logger.info("Producer topic already exists - skipping")
+            return
+
+        # Create if not exists
+        # Lifted from exercise 2.2, where config is present as well
+        futures = client.create_topics(
+            [NewTopic(
+                topic=self.topic_name, 
+                num_partitions=self.num_partitions, 
+                replication_factor=self.num_replicas,
+                config={
+                    "cleanup.policy": "delete",
+                    "compression.type": "lz4",
+                    "delete.retention.ms": "2000",
+                    "file.delete.delay.ms": "2000",
+                },
+                )]
+        )
+        for _, future in futures.items():
+            try:
+                future.result()
+            except Exception as e:
+                print(f"Error creating Producer topic. Exiting production loop. Error: {str(e)}")
 
     def time_millis(self):
         return int(round(time.time() * 1000))
