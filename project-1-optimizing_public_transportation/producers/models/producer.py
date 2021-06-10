@@ -53,7 +53,6 @@ class Producer:
             Producer.existing_topics.add(self.topic_name)
 
         # TODO: Configure the AvroProducer
-        # !FIXME
         # Inspired from Exercise 4.7, and documentation
         # See: https://docs.confluent.io/platform/current/clients/confluent-kafka-python/html/index.html#confluent_kafka.avro.AvroProducer
         self.producer = AvroProducer(
