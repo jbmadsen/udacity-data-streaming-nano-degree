@@ -41,7 +41,7 @@ To accomplish this, you must complete the following tasks:
 	* A topic is created for each station in Kafka to track the arrival events
 	* The station emits an `arrival` event to Kafka whenever the `Station.run()` function is called.
 	* Ensure that events emitted to kafka are paired with the Avro `key` and `value` schemas
-4. [ ] Define a `value` schema for the turnstile event in `producers/models/schemas/turnstile_value.json` with the following attributes
+4. [x] Define a `value` schema for the turnstile event in `producers/models/schemas/turnstile_value.json` with the following attributes
 	* `station_id`
 	* `station_name`
 	* `line`
