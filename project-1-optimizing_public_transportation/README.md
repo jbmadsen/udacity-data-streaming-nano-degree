@@ -37,7 +37,7 @@ To accomplish this, you must complete the following tasks:
 	* `train_status`
 	* `prev_station_id`
 	* `prev_direction`
-3. [ ] Complete the code in `producers/models/station.py` so that:
+3. [x] Complete the code in `producers/models/station.py` so that:
 	* A topic is created for each station in Kafka to track the arrival events
 	* The station emits an `arrival` event to Kafka whenever the `Station.run()` function is called.
 	* Ensure that events emitted to kafka are paired with the Avro `key` and `value` schemas
