@@ -33,14 +33,17 @@ class Station(Producer):
         )
 
         # TODO: Complete the below by deciding on a topic name, number of partitions, and number of replicas
-        # !FIXME
-        topic_name = f"{station_name}" # TODO: Come up with a better topic name (Why. It's a good name)
+        topic_name = f"{station_name}" # TODO: Come up with a better topic name
+        # Note: I did NOT come up with a better name. I think it is a very sensible approach to lower and replace characters
         super().__init__(
             topic_name,
             key_schema=Station.key_schema,
-            # TODO: value_schema=Station.value_schema, # TODO: Uncomment once schema is defined
-            # TODO: num_partitions=???,
-            # TODO: num_replicas=???,
+            # TODO: Uncomment once schema is defined
+            value_schema=Station.value_schema, 
+            # TODO
+            num_partitions=3, # Not chosen by any considerable metrics
+            # TODO
+            num_replicas=1, # Not chosen by any considerable metrics
         )
 
         self.station_id = int(station_id)
