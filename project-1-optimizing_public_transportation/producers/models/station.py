@@ -62,6 +62,8 @@ class Station(Producer):
         self.producer.produce(
             topic=self.topic_name,
             key={"timestamp": self.time_millis()},
+            key_schema=self.key_schema,
+            value_schema=self.value_schema,
             value={
                 "station_id": self.station_id,
                 "train_id": train.train_id,
