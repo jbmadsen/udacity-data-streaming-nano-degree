@@ -18,8 +18,9 @@ class Station(Producer):
     key_schema = avro.load(f"{Path(__file__).parents[0]}/schemas/arrival_key.json")
 
     # TODO: Define this value schema in `schemas/station_value.json, then uncomment the below
-    # !FIXME
-    #value_schema = avro.load(f"{Path(__file__).parents[0]}/schemas/arrival_value.json")
+    # NOTE: I assume the above should be "schemas/arrival_value.json", as there are no station_value.json,
+    # and below we reference arrival_value.json. But who knows ¯\_(ツ)_/¯
+    value_schema = avro.load(f"{Path(__file__).parents[0]}/schemas/arrival_value.json")
 
     def __init__(self, station_id, name, color, direction_a=None, direction_b=None):
         self.name = name
