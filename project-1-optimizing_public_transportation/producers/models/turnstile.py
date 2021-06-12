@@ -46,6 +46,19 @@ class Turnstile(Producer):
         num_entries = self.turnstile_hardware.get_entries(timestamp, time_step)
         # TODO: Complete this function by emitting a message to the turnstile topic for the number
         # of entries that were calculated
-        # !FIXME
-        logger.info("turnstile kafka integration incomplete - skipping")
+        for _ in range(num_entries):
+            # Once for each entry - we emit the same event multiple times,
+            # as turnstile_hardware.get_entries(timestamp, time_step) returns a single INT
+            self.producer.produce(
+                topic=self.topic_name,
+                key={"timestamp": self.time_millis()},
+                key_schema=self.key_schema,
+                value_schema=self.value_schema,
+                value={
+                    # All this info is found in the station object set in init
+                    "station_id": self.station.station_id,
+                    "station_name": self.station.train_id,
+                    "line": self.station.color.name
+                },
+            )
         
