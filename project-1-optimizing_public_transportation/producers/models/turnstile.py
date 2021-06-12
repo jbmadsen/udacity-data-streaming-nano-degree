@@ -28,13 +28,15 @@ class Turnstile(Producer):
         )
 
         # TODO: Complete the below by deciding on a topic name, number of partitions, and number of replicas
-        # !FIXME
         super().__init__(
-            f"{station_name}", # TODO: Come up with a better topic name
+            f"{station_name}.turnstile", # TODO: Come up with a better topic name 
+            # Note: Added .turnstile to avoid potential problems with using station_name again (same as in station.py)
             key_schema=Turnstile.key_schema,
-            # TODO: value_schema=Turnstile.value_schema, TODO: Uncomment once schema is defined
-            # TODO: num_partitions=???,
-            # TODO: num_replicas=???,
+            value_schema=Turnstile.value_schema, # TODO: Uncomment once schema is defined
+            # TODO: 
+            num_partitions=3, # Not chosen by any considerable metrics
+            # TODO: 
+            num_replicas=1, # Not chosen by any considerable metrics
         )
         self.station = station
         self.turnstile_hardware = TurnstileHardware(station)
