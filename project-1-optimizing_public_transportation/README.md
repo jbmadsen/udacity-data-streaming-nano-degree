@@ -45,7 +45,7 @@ To accomplish this, you must complete the following tasks:
 	* `station_id`
 	* `station_name`
 	* `line`
-5. [ ] Complete the code in `producers/models/turnstile.py` so that:
+5. [x] Complete the code in `producers/models/turnstile.py` so that:
 	* A topic is created for each turnstile for each station in Kafka to track the turnstile events
 	* The station emits a `turnstile` event to Kafka whenever the `Turnstile.run()` function is called.
 	* Ensure that events emitted to kafka are paired with the Avro `key` and `value` schemas
