@@ -57,7 +57,7 @@ class Turnstile(Producer):
                 value={
                     # All this info is found in the station object set in init
                     "station_id": self.station.station_id,
-                    "station_name": self.station.train_id,
+                    "station_name": self.station.name,
                     "line": self.station.color.name
                 },
             )
