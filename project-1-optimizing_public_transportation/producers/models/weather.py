@@ -31,11 +31,15 @@ class Weather(Producer):
 
     def __init__(self, month):
         # TODO: Complete the below by deciding on a topic name, number of partitions, and number of replicas
-        # !FIXME
         super().__init__(
-            "weather", # TODO: Come up with a better topic name
+            "cta.weather", # TODO: Come up with a better topic name 
+            # (NOTE: not really happy about naming, but can't think of anything clever right now)
             key_schema=Weather.key_schema,
             value_schema=Weather.value_schema,
+            # TODO:
+            num_partitions=3, # Not chosen by any considerable metrics
+            # TODO:
+            num_replicas=1, # Not chosen by any considerable metrics
         )
 
         self.status = Weather.status.sunny
