@@ -55,7 +55,7 @@ Our partners at the CTA have asked that we also send weather readings into Kafka
 
 To accomplish this, you must complete the following tasks:
 
-1. [ ] Define a `value` schema for the weather event in `producers/models/schemas/weather_value.json` with the following attributes
+1. [x] Define a `value` schema for the weather event in `producers/models/schemas/weather_value.json` with the following attributes
 	* `temperature`
 	* `status`
 2. [ ] Complete the code in `producers/models/weather.py` so that:
