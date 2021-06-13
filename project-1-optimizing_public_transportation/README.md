@@ -58,7 +58,7 @@ To accomplish this, you must complete the following tasks:
 1. [x] Define a `value` schema for the weather event in `producers/models/schemas/weather_value.json` with the following attributes
 	* `temperature`
 	* `status`
-2. [ ] Complete the code in `producers/models/weather.py` so that:
+2. [x] Complete the code in `producers/models/weather.py` so that:
 	* A topic is created for weather events
 	* The weather model emits `weather` event to Kafka REST Proxy whenever the `Weather.run()` function is called.
 		* **NOTE**: When sending HTTP requests to Kafka REST Proxy, be careful to include the correct `Content-Type`. Pay close attention to the [examples in the documentation](https://docs.confluent.io/current/kafka-rest/api.html#post--topics-(string-topic_name)) for more information.
