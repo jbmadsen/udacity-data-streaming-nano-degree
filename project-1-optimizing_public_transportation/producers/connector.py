@@ -21,10 +21,10 @@ def configure_connector():
         return
 
     # TODO: Complete the Kafka Connect Config below.
-    # Directions: Use the JDBC Source Connector to connect to Postgres. Load the `stations` table
-    # using incrementing mode, with `stop_id` as the incrementing column name.
-    # Make sure to think about what an appropriate topic prefix would be, and how frequently Kafka
-    # Connect should run this connector (hint: not very often!)
+    # Directions: Use the JDBC Source Connector to connect to Postgres. 
+    # Load the `stations` table using incrementing mode, with `stop_id` as the incrementing column name.
+    # Make sure to think about what an appropriate topic prefix would be, 
+    # and how frequently Kafka Connect should run this connector (hint: not very often!)
 
     resp = requests.post(
         KAFKA_CONNECT_URL,
@@ -41,7 +41,8 @@ def configure_connector():
                 # Lots of inspiration for below in Exercise 4.3
                 # database, user, and password are found in docker-compose file
                 # TODO
-                "connection.url": "jdbc:postgresql://localhost:5432/cta", 
+                "connection.url": "jdbc:postgresql://postgres:5432/cta", # Local docker container
+                # "connection.url": "jdbc:postgresql://localhost:5432/cta", # Udacity workspace
                 # TODO
                 "connection.user": "cta_admin",
                 # TODO
