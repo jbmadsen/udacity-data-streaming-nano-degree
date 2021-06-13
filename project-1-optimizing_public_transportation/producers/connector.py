@@ -26,42 +26,43 @@ def configure_connector():
     # Make sure to think about what an appropriate topic prefix would be, and how frequently Kafka
     # Connect should run this connector (hint: not very often!)
 
-    logger.info("connector code not completed skipping connector creation")
-    #resp = requests.post(
-    #    KAFKA_CONNECT_URL,
-    #    headers={"Content-Type": "application/json"},
-    #    data=json.dumps({
-    #        "name": CONNECTOR_NAME,
-    #        "config": {
-    #            "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
-    #            "key.converter": "org.apache.kafka.connect.json.JsonConverter",
-    #            "key.converter.schemas.enable": "false",
-    #            "value.converter": "org.apache.kafka.connect.json.JsonConverter",
-    #            "value.converter.schemas.enable": "false",
-    #            "batch.max.rows": "500",
-    #            # TODO
-    #            "connection.url": "",
-    #            # TODO
-    #            "connection.user": "",
-    #            # TODO
-    #            "connection.password": "",
-    #            # TODO
-    #            "table.whitelist": "",
-    #            # TODO
-    #            "mode": "",
-    #            # TODO
-    #            "incrementing.column.name": "",
-    #            # TODO
-    #            "topic.prefix": "",
-    #            # TODO
-    #            "poll.interval.ms": "",
-    #        }
-    #    }),
-    #)
+    resp = requests.post(
+        KAFKA_CONNECT_URL,
+        headers={"Content-Type": "application/json"},
+        data=json.dumps({
+            "name": CONNECTOR_NAME,
+            "config": {
+                "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
+                "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+                "key.converter.schemas.enable": "false",
+                "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+                "value.converter.schemas.enable": "false",
+                "batch.max.rows": "500",
+                # Lots of inspiration for below in Exercise 4.3
+                # database, user, and password are found in docker-compose file
+                # TODO
+                "connection.url": "jdbc:postgresql://localhost:5432/cta", 
+                # TODO
+                "connection.user": "cta_admin",
+                # TODO
+                "connection.password": "chicago",
+                # TODO
+                "table.whitelist": "stations",
+                # TODO
+                "mode": "incrementing",
+                # TODO
+                "incrementing.column.name": "stop_id",
+                # TODO
+                "topic.prefix": "train_stations.",
+                # TODO
+                "poll.interval.ms": "300000", # Every 5 minutes (5 * 60 * 1000)
+            }
+        }),
+    )
 
-    ## Ensure a healthy response was given
-    #resp.raise_for_status()
-    #logging.debug("connector created successfully")
+    # Ensure a healthy response was given
+    resp.raise_for_status()
+    logging.debug("connector created successfully")
 
 
 if __name__ == "__main__":
