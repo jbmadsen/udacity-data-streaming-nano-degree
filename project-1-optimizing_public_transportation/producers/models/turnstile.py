@@ -44,6 +44,10 @@ class Turnstile(Producer):
     def run(self, timestamp, time_step):
         """Simulates riders entering through the turnstile."""
         num_entries = self.turnstile_hardware.get_entries(timestamp, time_step)
+
+        # For debugging purposes
+        print("Producing Turnstile(Producer).run()")
+
         # TODO: Complete this function by emitting a message to the turnstile topic for the number
         # of entries that were calculated
         for _ in range(num_entries):

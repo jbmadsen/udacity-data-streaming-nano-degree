@@ -61,16 +61,17 @@ class Station(Producer):
         # TODO: Complete this function by producing an arrival message to Kafka
 
         # For debugging purposes
-        print("\n",
-            "station_id:", str(self.station_id), "\n",
-            "train_id:", train.train_id, "\n",
-            "direction:", direction, "\n",
-            "line:", self.color.name, "\n",
-            "train_status:", train.status.name, "\n",
-            "prev_station_id:", prev_station_id, "\n",
-            "prev_direction:", prev_direction, "\n",
-            ""
-        )
+        print("Producing Station(Producer).run()")
+        # print("\n",
+        #     "station_id:", str(self.station_id), "\n",
+        #     "train_id:", train.train_id, "\n",
+        #     "direction:", direction, "\n",
+        #     "line:", self.color.name, "\n",
+        #     "train_status:", train.status.name, "\n",
+        #     "prev_station_id:", prev_station_id, "\n",
+        #     "prev_direction:", prev_direction, "\n",
+        #     ""
+        # )
         
         self.producer.produce(
             topic=self.topic_name,
