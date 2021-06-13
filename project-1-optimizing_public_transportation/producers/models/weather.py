@@ -76,7 +76,6 @@ class Weather(Producer):
         
         # TODO: Complete the function by posting a weather event to REST Proxy. Make sure to
         # specify the Avro schemas and verify that you are using the correct Content-Type header.
-        # !FIXME
         resp = requests.post(
             # TODO: What URL should be POSTed to?
             # NOTE, Lesson 4: POST data to /topics/<topic_name> to produce data
