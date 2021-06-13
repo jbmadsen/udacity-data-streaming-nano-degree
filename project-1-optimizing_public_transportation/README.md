@@ -200,7 +200,9 @@ However, when you are ready to verify the end-to-end system prior to submission,
 
 1. `cd producers`
 2. `virtualenv venv`
-3. `. venv/bin/activate`
+3. Activate virtualenv:
+	- `. venv/bin/activate` on Linux
+	- `venv\Scripts\activate` on Windows
 4. `pip install -r requirements.txt`
 5. `python simulation.py`
 
@@ -209,7 +211,9 @@ Once the simulation is running, you may hit `Ctrl+C` at any time to exit.
 #### To run the Faust Stream Processing Application:
 1. `cd consumers`
 2. `virtualenv venv`
-3. `. venv/bin/activate`
+3. Activate virtualenv:
+	- `. venv/bin/activate` on Linux
+	- `venv\Scripts\activate` on Windows
 4. `pip install -r requirements.txt`
 5. `faust -A faust_stream worker -l info`
 
@@ -217,7 +221,9 @@ Once the simulation is running, you may hit `Ctrl+C` at any time to exit.
 #### To run the KSQL Creation Script:
 1. `cd consumers`
 2. `virtualenv venv`
-3. `. venv/bin/activate`
+3. Activate virtualenv:
+	- `. venv/bin/activate` on Linux
+	- `venv\Scripts\activate` on Windows
 4. `pip install -r requirements.txt`
 5. `python ksql.py`
 
@@ -226,7 +232,9 @@ Once the simulation is running, you may hit `Ctrl+C` at any time to exit.
 ** NOTE **: Do not run the consumer until you have reached Step 6!
 1. `cd consumers`
 2. `virtualenv venv`
-3. `. venv/bin/activate`
+3. Activate virtualenv:
+	- `. venv/bin/activate` on Linux
+	- `venv\Scripts\activate` on Windows
 4. `pip install -r requirements.txt`
 5. `python server.py`
 
