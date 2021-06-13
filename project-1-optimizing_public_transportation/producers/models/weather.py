@@ -54,7 +54,6 @@ class Weather(Producer):
                 Weather.key_schema = json.load(f)
 
         # TODO: Define this value schema in `schemas/weather_value.json
-        # !FIXME
         if Weather.value_schema is None:
             with open(f"{Path(__file__).parents[0]}/schemas/weather_value.json") as f:
                 Weather.value_schema = json.load(f)
