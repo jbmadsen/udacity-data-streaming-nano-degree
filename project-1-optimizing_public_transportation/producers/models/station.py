@@ -33,9 +33,7 @@ class Station(Producer):
         )
 
         # TODO: Complete the below by deciding on a topic name, number of partitions, and number of replicas
-        topic_name = f"{station_name}" # TODO: Come up with a better topic name
-        # Note: I did NOT come up with a better name. I think it is a very sensible approach to lower and replace characters
-        # Only reason to change it is if there are duplicates (i.e. same station name from multiple directions). If that happens I will append direction or something.
+        topic_name = f"train_station.arrivals.{station_name}" # TODO: Come up with a better topic name
         super().__init__(
             topic_name,
             key_schema=Station.key_schema,
