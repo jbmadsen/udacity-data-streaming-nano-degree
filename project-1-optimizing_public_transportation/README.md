@@ -80,7 +80,7 @@ We will leverage Faust Stream Processing to transform the raw Stations table tha
 
 To accomplish this, you must complete the following tasks:
 
-1. [ ] Complete the code and configuration in `consumers/faust_stream.py`
+1. [x] Complete the code and configuration in `consumers/faust_stream.py`
 
 #### Watch Out!
 
