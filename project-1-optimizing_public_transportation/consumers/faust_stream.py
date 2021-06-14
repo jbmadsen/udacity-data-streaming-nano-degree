@@ -34,7 +34,8 @@ class TransformedStation(faust.Record):
 # 1) ingests data from the Kafka Connect stations topic, and
 # 2) places it into a new topic with only the necessary information.
 # See: https://faust.readthedocs.io/en/latest/userguide/application.html#application-parameters
-app = faust.App("stations-stream", broker="kafka://localhost:9092", store="memory://")
+# "id" also defines the Consumer Group. See: https://faust.readthedocs.io/en/latest/userguide/settings.html#guide-settings
+app = faust.App(id="stations-stream", broker="kafka://localhost:9092", store="memory://")
 
 # TODO: Define the input Kafka Topic. Hint: What topic did Kafka Connect output to?
 # See: https://faust.readthedocs.io/en/latest/userguide/application.html#app-topic-create-a-topic-description
@@ -56,9 +57,11 @@ table = app.Table(
 # TODO: Using Faust, transform input `Station` records into `TransformedStation` records. 
 # Note that "line" is the color of the station. So if the `Station` record has the field `red` set to true,
 # then you would set the `line` of the `TransformedStation` record to the string `"red"`
+# Based on: https://readthedocs.org/projects/faust/downloads/pdf/latest/ (page 8), 
+# the input parameter and return has been updated to reflect what I suspect is more correct 
 # !FIXME
 @app.agent(topic)
-async def process_transform_station(stations: Station):
+async def process_transform_station(stations: faust.Stream[Station]) -> None:
     async for station in stations:
         table[station.station_id] = TransformedStation(
             station_id=station.station_id,
