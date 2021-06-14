@@ -65,11 +65,12 @@ async def process_transform_station(stations: faust.Stream[Station]) -> None:
     convert_line = lambda line: "red" if line.red else "green" if line.green else "blue"
     # Process data
     async for station in stations:
+        #print("station.station_name:", station.station_name)
         table[station.station_id] = TransformedStation(
             station_id=station.station_id,
             station_name=station.station_name,
             order=station.order,
-            line=convert_line(station.line)
+            line=convert_line(station)
         )
         pass
 
