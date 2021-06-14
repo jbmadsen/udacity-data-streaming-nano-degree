@@ -1,5 +1,6 @@
 """Defines trends calculations for stations"""
 import logging
+from os import stat
 
 import faust
 
@@ -32,18 +33,21 @@ class TransformedStation(faust.Record):
 # TODO: Define a Faust Stream that:
 # 1) ingests data from the Kafka Connect stations topic, and
 # 2) places it into a new topic with only the necessary information.
+# See: https://faust.readthedocs.io/en/latest/userguide/application.html#application-parameters
 app = faust.App("stations-stream", broker="kafka://localhost:9092", store="memory://")
 
 # TODO: Define the input Kafka Topic. Hint: What topic did Kafka Connect output to?
+# See: https://faust.readthedocs.io/en/latest/userguide/application.html#app-topic-create-a-topic-description
 topic = app.topic("TODO", value_type=Station)
 
 # TODO: Define the output Kafka Topic
-out_topic = app.topic("TODO", partitions=1)
+out_topic = app.topic("cta.stations.table.transformed", partitions=1)
 
 # TODO: Define a Faust Table
+# See: https://faust.readthedocs.io/en/latest/userguide/application.html#app-table-define-a-new-table
 table = app.Table(
-    # "TODO",
-    # default=TODO,
+    "cta.stations.table.transformed",
+    default=TransformedStation,
     partitions=1,
     changelog_topic=out_topic,
 )
@@ -53,7 +57,16 @@ table = app.Table(
 # Note that "line" is the color of the station. So if the `Station` record has the field `red` set to true,
 # then you would set the `line` of the `TransformedStation` record to the string `"red"`
 # !FIXME
-pass
+@app.agent(topic)
+async def process_transform_station(stations: Station):
+    async for station in stations:
+        table[station.station_id] = TransformedStation(
+            station_id=station.station_id,
+            station_name=station.station_name,
+            order=station.order,
+            line=station.line # TODO: Convert as per description above
+        )
+        pass
 
 
 if __name__ == "__main__":
