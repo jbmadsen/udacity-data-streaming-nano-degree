@@ -93,7 +93,7 @@ Next, we will use KSQL to aggregate turnstile data for each of our stations. Rec
 
 To accomplish this, you must complete the following tasks:
 
-1. [ ] Complete the queries in `consumers/ksql.py`
+1. [x] Complete the queries in `consumers/ksql.py`
 
 #### Tips
 
