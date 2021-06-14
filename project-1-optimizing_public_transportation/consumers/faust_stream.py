@@ -39,35 +39,37 @@ app = faust.App(id="stations-stream", broker="kafka://localhost:9092", store="me
 
 # TODO: Define the input Kafka Topic. Hint: What topic did Kafka Connect output to?
 # See: https://faust.readthedocs.io/en/latest/userguide/application.html#app-topic-create-a-topic-description
-topic = app.topic("TODO", value_type=Station)
+# For topic name, see: producers/connector.py: "topic.prefix"
+topic = app.topic("train_stations.stations", value_type=Station)
 
 # TODO: Define the output Kafka Topic
-out_topic = app.topic("cta.stations.table.transformed", partitions=1)
+out_topic = app.topic("train_stations.stations.table.transformed", partitions=1)
 
 # TODO: Define a Faust Table
 # See: https://faust.readthedocs.io/en/latest/userguide/application.html#app-table-define-a-new-table
 table = app.Table(
-    "cta.stations.table.transformed",
+    "train_stations.stations.table.transformed",
     default=TransformedStation,
     partitions=1,
     changelog_topic=out_topic,
 )
-
 
 # TODO: Using Faust, transform input `Station` records into `TransformedStation` records. 
 # Note that "line" is the color of the station. So if the `Station` record has the field `red` set to true,
 # then you would set the `line` of the `TransformedStation` record to the string `"red"`
 # Based on: https://readthedocs.org/projects/faust/downloads/pdf/latest/ (page 8), 
 # the input parameter and return has been updated to reflect what I suspect is more correct 
-# !FIXME
 @app.agent(topic)
 async def process_transform_station(stations: faust.Stream[Station]) -> None:
+    # Converting line boolean to string text lambda
+    convert_line = lambda line: "red" if line.red else "green" if line.green else "blue"
+    # Process data
     async for station in stations:
         table[station.station_id] = TransformedStation(
             station_id=station.station_id,
             station_name=station.station_name,
             order=station.order,
-            line=station.line # TODO: Convert as per description above
+            line=convert_line(station.line)
         )
         pass
 
