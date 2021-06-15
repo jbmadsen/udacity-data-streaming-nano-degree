@@ -107,9 +107,9 @@ With all of the data in Kafka, our final task is to consume the data in the web 
 
 To accomplish this, you must complete the following tasks:
 
-1. [ ] Complete the code in `consumers/consumer.py`
-2. [ ] Complete the code in `consumers/models/line.py`
-3. [ ] Complete the code in `consumers/models/weather.py`
+1. [x] Complete the code in `consumers/consumer.py`
+2. [x] Complete the code in `consumers/models/line.py`
+3. [x] Complete the code in `consumers/models/weather.py`
 4. [ ] Complete the code in `consumers/models/station.py`
 
 ### Documentation
