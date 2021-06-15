@@ -81,9 +81,23 @@ class KafkaConsumer:
         # TODO: Poll Kafka for messages. Make sure to handle any errors or exceptions.
         # Additionally, make sure you return 1 when a message is processed, and 0 when no message
         # is retrieved.
-        # !FIXME
-        logger.info("_consume is incomplete - skipping")
-        return 0
+        try:
+            # Try get message
+            message = self.consumer.poll(timeout=self.consume_timeout)
+            if message is None:
+                # No message this time
+                logger.info(f"No message this time")
+                return 0
+            if message.error() is not None:
+                # Error getting message
+                logger.error(f"Error getting message: {message.error()}")
+                return 0
+            # Got message, lets handle it
+            self.message_handler(message)
+            return 1
+        except Exception as e:
+            logger.error(f"Exception getting message: {str(e)}")
+            return 0
 
 
     def close(self):
