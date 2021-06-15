@@ -72,7 +72,6 @@ async def process_transform_station(stations: faust.Stream[Station]) -> None:
             order=station.order,
             line=convert_line(station)
         )
-        pass
 
 
 if __name__ == "__main__":

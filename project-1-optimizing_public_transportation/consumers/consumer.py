@@ -87,7 +87,7 @@ class KafkaConsumer:
             message = self.consumer.poll(timeout=self.consume_timeout)
             if message is None:
                 # No message this time
-                logger.info(f"No message this time")
+                #logger.info(f"No message this time")
                 return 0
             if message.error() is not None:
                 # Error getting message
