@@ -81,6 +81,7 @@ class KafkaConsumer:
         # TODO: Poll Kafka for messages. Make sure to handle any errors or exceptions.
         # Additionally, make sure you return 1 when a message is processed, and 0 when no message
         # is retrieved.
+        # See exercise 2.5 for inspiration for this code
         try:
             # Try get message
             message = self.consumer.poll(timeout=self.consume_timeout)
