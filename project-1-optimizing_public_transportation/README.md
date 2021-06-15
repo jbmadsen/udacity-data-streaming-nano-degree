@@ -110,7 +110,7 @@ To accomplish this, you must complete the following tasks:
 1. [x] Complete the code in `consumers/consumer.py`
 2. [x] Complete the code in `consumers/models/line.py`
 3. [x] Complete the code in `consumers/models/weather.py`
-4. [ ] Complete the code in `consumers/models/station.py`
+4. [x] Complete the code in `consumers/models/station.py`
 
 ### Documentation
 In addition to the course content you have already reviewed, you may find the following examples and documentation helpful in completing this assignment:
