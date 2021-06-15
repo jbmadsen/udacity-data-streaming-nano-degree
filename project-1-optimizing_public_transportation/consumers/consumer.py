@@ -32,8 +32,11 @@ class KafkaConsumer:
 
         # TODO: Configure the broker properties below. 
         # Make sure to reference the project README and use the Host URL for Kafka and Schema Registry!
+        # see documentation: https://kafka.apache.org/documentation/#consumerconfigs
         # !FIXME
         self.broker_properties = {
+                # See README under "Running and Testing" for setting below - for Kafka Service
+                "bootstrap.servers": "PLAINTEXT://localhost:9092,PLAINTEXT://localhost:9093,PLAINTEXT://localhost:9094",
                 # TODO
         }
 
