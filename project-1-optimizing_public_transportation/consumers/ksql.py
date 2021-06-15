@@ -28,7 +28,7 @@ CREATE TABLE turnstile (
     station_name VARCHAR,
     line VARCHAR
 ) WITH (
-    KAFKA_TOPIC='train_station.turnstile',
+    KAFKA_TOPIC='org.chicago.cta.stations.turnstile',
     VALUE_FORMAT='AVRO',
     KEY='station_id'
 );

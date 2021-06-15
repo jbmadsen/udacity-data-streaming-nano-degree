@@ -32,7 +32,7 @@ class Weather(Producer):
     def __init__(self, month):
         # TODO: Complete the below by deciding on a topic name, number of partitions, and number of replicas
         super().__init__(
-            "train_station.weather", # TODO: Come up with a better topic name 
+            "org.chicago.cta.weather", # TODO: Come up with a better topic name 
             # (NOTE: not really happy about naming, but can't think of anything clever right now)
             key_schema=Weather.key_schema,
             value_schema=Weather.value_schema,

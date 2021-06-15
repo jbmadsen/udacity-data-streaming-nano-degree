@@ -60,7 +60,7 @@ class Line:
         
         # TODO: Set the conditional correctly to the stations Faust Table
         # See consumers/faust_stream.py for topic name
-        if message.topic() == "train_stations.stations.table.transformed": 
+        if message.topic() == "org.chicago.cta.stations.table.transformed": 
             try:
                 value = json.loads(message.value())
                 self._handle_station(value)
