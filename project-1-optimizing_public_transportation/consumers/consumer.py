@@ -61,11 +61,9 @@ class KafkaConsumer:
         """Callback for when topic assignment takes place"""
         # TODO: If the topic is configured to use `offset_earliest` set the partition offset to
         # the beginning or earliest
-        # !FIXME
-        logger.info("on_assign is incomplete - skipping")
-        for partition in partitions:
-            pass
-            # TODO
+        if self.offset_earliest:
+            for partition in partitions:
+                partition.offset = confluent_kafka.OFFSET_BEGINNING
 
         logger.info("partitions assigned for %s", self.topic_name_pattern)
         consumer.assign(partitions)
