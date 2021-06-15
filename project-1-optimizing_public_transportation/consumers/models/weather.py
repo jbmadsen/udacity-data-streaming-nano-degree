@@ -15,6 +15,11 @@ class Weather:
 
     def process_message(self, message):
         """Handles incoming weather data"""
-        logger.info("weather process_message is incomplete - skipping")
         # TODO: Process incoming weather messages. Set the temperature and status.
-        # !FIXME
+        try:
+            # See producers/models/schemas/weather_value.json for message.value() content
+            weather_data = message.value()
+            self.temperature = weather_data["temperature"]
+            self.status = weather_data["status"]
+        except Exception as e:
+            logger.error(f"Exception parsing weather message: {str(e)}")
