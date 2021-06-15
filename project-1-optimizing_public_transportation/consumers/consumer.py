@@ -33,25 +33,30 @@ class KafkaConsumer:
         # TODO: Configure the broker properties below. 
         # Make sure to reference the project README and use the Host URL for Kafka and Schema Registry!
         # see documentation: https://kafka.apache.org/documentation/#consumerconfigs
+        # and https://docs.confluent.io/platform/current/clients/consumer.html#ak-consumer-configuration
         # !FIXME
         self.broker_properties = {
                 # See README under "Running and Testing" for setting below - for Kafka Service
                 "bootstrap.servers": "PLAINTEXT://localhost:9092,PLAINTEXT://localhost:9093,PLAINTEXT://localhost:9094",
-                # TODO
+                # See documentation for this
+                "group.id": f"{self.topic_name_pattern}",
+                # Implementing init parameters
+                "fetch.wait.max.ms": (int)(self.consume_timeout * 1000),
+                "auto.offset.reset": "earliest" if self.offset_earliest else "latest"
         }
 
         # TODO: Create the Consumer, using the appropriate type.
         if is_avro is True:
             self.broker_properties["schema.registry.url"] = "http://localhost:8081"
-            #self.consumer = AvroConsumer(...)
+            self.consumer = AvroConsumer(self.broker_properties)
         else:
-            #self.consumer = Consumer(...)
-            pass
+            self.consumer = Consumer(self.broker_properties)
 
         # TODO: Configure the AvroConsumer and subscribe to the topics. 
         # Make sure to think about how the `on_assign` callback should be invoked.
-        # !FIXME
-        # self.consumer.subscribe( TODO )
+        # See: https://docs.confluent.io/current/clients/confluent-kafka-python/index.html?highlight=partition#confluent_kafka.Consumer.subscribe
+        # and exercise 2.5 for code inspiration
+        self.consumer.subscribe([self.topic_name_pattern], on_assign=self.on_assign)
 
     def on_assign(self, consumer, partitions):
         """Callback for when topic assignment takes place"""
