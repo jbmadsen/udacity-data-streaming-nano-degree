@@ -25,7 +25,7 @@ vehicleCheckinSchema = StructType (
 )
 
 # TODO: create a spark session, with an appropriately named application name
-spark = SparkSession.builder.appName("vehicle-checkin").getOrCreate()
+spark = SparkSession.builder.appName("exercise3-vehicle-checkin").getOrCreate()
 
 # TODO: set the log level to WARN
 spark.sparkContext.setLogLevel('WARN')
