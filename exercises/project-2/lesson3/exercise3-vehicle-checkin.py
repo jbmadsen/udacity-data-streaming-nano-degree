@@ -78,7 +78,7 @@ vehicle_checkin_qry = spark.sql("select reservationId, locationName, truckNumber
 
 # TODO: join the customer dataframe with the deposit dataframe
 join_expr = """statusTruckNumber = checkinTruckNumber"""
-checkinStatusDF = vehicle_status_qry.join(vehicle_checkin_qry, expr(join_expr))
+checkin_status_df = vehicle_status_qry.join(vehicle_checkin_qry, expr(join_expr))
 
 # TODO: write the stream to the console, and configure it to run indefinitely, the console output will look something like this:
 # +-----------------+------------+-------------+---------------+-------------+------------+------------------+------+
@@ -96,7 +96,7 @@ checkinStatusDF = vehicle_status_qry.join(vehicle_checkin_qry, expr(join_expr))
 # |             1445|  New Mexico|          436|         298473|1602364379489|    Michigan|              1445|    In|
 # |             1445|       Texas|          434|         298492|1602364379489|    Michigan|              1445|    In|
 # +-----------------+------------+-------------+---------------+-------------+------------+------------------+------+
-checkinStatusDF.writeStream \
+checkin_status_df.writeStream \
     .outputMode("append") \
     .format("console") \
     .start() \
