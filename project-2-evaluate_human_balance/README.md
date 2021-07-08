@@ -106,9 +106,9 @@ The application development team was not able to complete the feature as the gra
 
 ![Empty Graph](images/empty_graph.png)
 
-- Spark master and worker run as part of the docker-compose configuration
+- [ ] Spark master and worker run as part of the docker-compose configuration
 
-- Save the Spark startup logs for submission with your solution using the commands below:
+- [ ] Save the Spark startup logs for submission with your solution using the commands below:
 
 ```
 docker logs nd029-c2-apache-spark-and-spark-streaming_spark_1 >& ../../spark/logs/spark-master.log
@@ -116,34 +116,34 @@ docker logs nd029-c2-apache-spark-and-spark-streaming_spark_1 >& ../../spark/log
 docker logs nd029-c2-apache-spark-and-spark-streaming_spark_1 >& ../../spark/logs/spark-master.log >& ../../spark/logs/spark-worker.log
 ```
 
-- Create a new Kafka topic to transmit the complete risk score with birth date, so the data can be viewed in the STEDI application graph
+- [ ] Create a new Kafka topic to transmit the complete risk score with birth date, so the data can be viewed in the STEDI application graph
 
-- Edit `docker-compose.yaml` and set the the name of the newly created topic:
+- [ ] Edit `docker-compose.yaml` and set the the name of the newly created topic:
 
 ```
 KAFKA_RISK_TOPIC: ______
 ```
 
-- From the terminal running the docker-composer output, stop the docker containers:
+- [ ] From the terminal running the docker-composer output, stop the docker containers:
 ```
 CTRL+C
 ```
 
-- Wait until they all stop
+- [ ] Wait until they all stop
 
-- Start the docker containers once again:
+- [ ] Start the docker containers once again:
 
 ```
 docker-compose up
 ```
 
-- Log in to the STEDI application: http://localhost:4567
+- [ ] Log in to the STEDI application: http://localhost:4567
 
-- From the timer page, use the toggle button in the upper right corner to activate simulated user data to see real-time customer and risk score data. Toggle off and on to create additional customers for redis events. Each time you activate it, STEDI creates 30 new customers, and then starts generating risk scores for each one. It takes 4 minutes for each customer to have risk scores generated, however customer data is generated immediately. 
+- [ ] From the timer page, use the toggle button in the upper right corner to activate simulated user data to see real-time customer and risk score data. Toggle off and on to create additional customers for redis events. Each time you activate it, STEDI creates 30 new customers, and then starts generating risk scores for each one. It takes 4 minutes for each customer to have risk scores generated, however customer data is generated immediately. 
 
 ![Toggle Switch](images/toggle_simulation.png)
 
-- To monitor the progress of data generated, from a terminal type: 
+- [ ] To monitor the progress of data generated, from a terminal type: 
 
 ```
 docker logs -f nd029-c2-apache-spark-and-spark-streaming_stedi_1
@@ -151,10 +151,10 @@ docker logs -f nd029-c2-apache-spark-and-spark-streaming_stedi_1
 
 
 
-- You are going to to write 3 Spark Python scripts. Each will connect to a kafka broker running at `kafka:19092` :
-    - `redis-server` topic: Write one spark script `sparkpyrediskafkastreamtoconsole.py` to subscribe to the `redis-server` topic, base64 decode the payload, and deserialize the JSON to individual fields, then print the fields to the console. The data should include the birth date and email address. You will need these.
-    - `stedi-events` topic: Write a second spark script `sparkpyeventskafkastreamtoconsole.py` to subscribe to the `stedi-events` topic and deserialize the JSON (it is not base64 encoded) to individual fields. You will need the email address and the risk score.
-    - New Topic: Write a spark script `sparkpykafkajoin.py` to join the customer dataframe and the customer risk dataframes, joining on the email address. Create a JSON output to the newly created kafka topic you configured for STEDI to subscribe to that contains at least the fields below:
+- [ ] You are going to to write 3 Spark Python scripts. Each will connect to a kafka broker running at `kafka:19092` :
+    - [ ] `redis-server` topic: Write one spark script `sparkpyrediskafkastreamtoconsole.py` to subscribe to the `redis-server` topic, base64 decode the payload, and deserialize the JSON to individual fields, then print the fields to the console. The data should include the birth date and email address. You will need these.
+    - [ ] `stedi-events` topic: Write a second spark script `sparkpyeventskafkastreamtoconsole.py` to subscribe to the `stedi-events` topic and deserialize the JSON (it is not base64 encoded) to individual fields. You will need the email address and the risk score.
+    - [ ] New Topic: Write a spark script `sparkpykafkajoin.py` to join the customer dataframe and the customer risk dataframes, joining on the email address. Create a JSON output to the newly created kafka topic you configured for STEDI to subscribe to that contains at least the fields below:
 
 ```json
 {"customer":"Santosh.Fibonnaci@test.com",
@@ -164,11 +164,11 @@ docker logs -f nd029-c2-apache-spark-and-spark-streaming_stedi_1
 } 
 ```
 
-- From a new terminal type: `submit-event-kafkajoin.sh` or `submit-event-kafkajoin.cmd` to submit to the cluster
+- [ ] From a new terminal type: `submit-event-kafkajoin.sh` or `submit-event-kafkajoin.cmd` to submit to the cluster
 
-- Once the data is populated in the configured kafka topic, the graph should have real-time data points
+- [ ] Once the data is populated in the configured kafka topic, the graph should have real-time data points
 
 ![Populated Graph](images/populated_graph.png)
 
-- Upload at least two screenshots of the working graph to the screenshots workspace folder 
+- [ ] Upload at least two screenshots of the working graph to the screenshots workspace folder 
 
