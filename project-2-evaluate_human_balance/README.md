@@ -2,49 +2,49 @@
 
 You work for the data science team at STEDI, a small startup focused on assessing balance for seniors. STEDI has an application that collects data from seniors during a small exercise. The user logs in, and then selects the customer they are working with. Then the user starts a timer, and clicks a button with each step the senior takes. When the senior has reached 30 steps, their test is finished. The data transmitted enables the application to monitor seniors’ balance risk. 
 
-- Start the docker workspace from the root of the repository folder:
+- [x] Start the docker workspace from the root of the repository folder:
 ```
 cd [repositoryfolder]
 docker-compose up
 ```
 
-- Make sure the containers are all running (you should see 9 processes):
+- [x] Make sure the containers are all running (you should see 9 processes):
 ```
 docker ps
 ```
-- Log in to the STEDI application: http://localhost:4567
+- [x] Log in to the STEDI application: http://localhost:4567
 
-- Click Create New Customer, create a test customer and submit
+- [ ] Click Create New Customer, create a test customer and submit
 
-- Click start, then add steps until you reach 30 and the timer has stopped
+- [ ] Click start, then add steps until you reach 30 and the timer has stopped
 
-- Repeat this three times, and you will receive a risk score
+- [ ] Repeat this three times, and you will receive a risk score
 
 # Analyzing the Data
 
 The STEDI data science team has configured some real-time data sources using Kafka Connect. One of those data sources is Redis. When a customer is first assessed in the STEDI application, their record  is added to a sorted set called Customer in redis. Redis is running in a docker container on the default redis port (6379). There is no redis password configured. Redis is configured as a Kafka source, and whenever any data is saved to Redis (including Customer information), a payload is published to the Kafka topic called redis-server. 
 
-- To connect to the redis instance, from the terminal connect to Redis: 
+- [ ] To connect to the redis instance, from the terminal connect to Redis: 
 
 ```
 docker exec -it nd029-c2-apache-spark-and-spark-streaming_redis_1 redis-cli
 ```
 
-- Type:
+- [ ] Type:
 
 ```
 zrange customer 0 -1
 ```
 
-- Locate the the customer you created in the output
+- [ ] Locate the the customer you created in the output
 
-- In another terminal run this command to start monitoring the kafka topic:
+- [ ] In another terminal run this command to start monitoring the kafka topic:
 
 ```
 docker exec -it nd029-c2-apache-spark-and-spark-streaming_kafka_1 kafka-console-consumer --bootstrap-server localhost:9092 --topic redis-server
 ```
 
-- Back in the redis-cli, type: 
+- [ ] Back in the redis-cli, type: 
 
 ```
 zadd Customer 0 "{\"customerName\":\"Sam Test\",\"email\":\"sam.test@test.com\",\"phone\":\"8015551212\",\"birthDay\":\"2001-01-03\"}"
