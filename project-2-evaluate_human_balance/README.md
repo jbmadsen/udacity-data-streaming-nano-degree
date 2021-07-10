@@ -14,7 +14,8 @@ docker ps
 ```
 - [x] Log in to the STEDI application: http://localhost:4567
 
-- [ ] Click Create New Customer, create a test customer and submit
+- [x] Click Create New Customer, create a test customer and submit
+    - NOTE: Could not get this step working in Firefox. In Edge it works, though.  
 
 - [ ] Click start, then add steps until you reach 30 and the timer has stopped
 
