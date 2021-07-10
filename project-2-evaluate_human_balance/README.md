@@ -41,13 +41,13 @@ zrange customer 0 -1
 - [ ] Locate the the customer you created in the output
     - FIXME: This isn't currently working (no output in Redis)
 
-- [ ] In another terminal run this command to start monitoring the kafka topic:
+- [x] In another terminal run this command to start monitoring the kafka topic:
 
 ```
-docker exec -it nd029-c2-apache-spark-and-spark-streaming_kafka_1 kafka-console-consumer --bootstrap-server localhost:9092 --topic redis-server
+docker exec -it project-2-evaluate_human_balance_kafka_1 kafka-console-consumer --bootstrap-server localhost:9092 --topic redis-server
 ```
 
-- [ ] Back in the redis-cli, type: 
+- [x] Back in the redis-cli, type: 
 
 ```
 zadd Customer 0 "{\"customerName\":\"Sam Test\",\"email\":\"sam.test@test.com\",\"phone\":\"8015551212\",\"birthDay\":\"2001-01-03\"}"
