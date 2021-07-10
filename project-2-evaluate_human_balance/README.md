@@ -17,9 +17,10 @@ docker ps
 - [x] Click Create New Customer, create a test customer and submit
     - NOTE: Could not get this step working in Firefox. In Edge it works, though.  
 
-- [ ] Click start, then add steps until you reach 30 and the timer has stopped
+- [x] Click start, then add steps until you reach 30 and the timer has stopped
+    - NOTE: Could not get this step working in Firefox. In Edge it works, though.  
 
-- [ ] Repeat this three times, and you will receive a risk score
+- [x] Repeat this three times, and you will receive a risk score
 
 # Analyzing the Data
 
