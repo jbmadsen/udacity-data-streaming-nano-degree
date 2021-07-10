@@ -26,10 +26,10 @@ docker ps
 
 The STEDI data science team has configured some real-time data sources using Kafka Connect. One of those data sources is Redis. When a customer is first assessed in the STEDI application, their record  is added to a sorted set called Customer in redis. Redis is running in a docker container on the default redis port (6379). There is no redis password configured. Redis is configured as a Kafka source, and whenever any data is saved to Redis (including Customer information), a payload is published to the Kafka topic called redis-server. 
 
-- [ ] To connect to the redis instance, from the terminal connect to Redis: 
+- [x] To connect to the redis instance, from the terminal connect to Redis: 
 
 ```
-docker exec -it nd029-c2-apache-spark-and-spark-streaming_redis_1 redis-cli
+docker exec -it project-2-evaluate_human_balance_redis_1 redis-cli
 ```
 
 - [ ] Type:
