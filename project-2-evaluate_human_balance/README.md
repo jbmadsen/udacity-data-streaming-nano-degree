@@ -32,13 +32,14 @@ The STEDI data science team has configured some real-time data sources using Kaf
 docker exec -it project-2-evaluate_human_balance_redis_1 redis-cli
 ```
 
-- [ ] Type:
+- [x] Type:
 
 ```
 zrange customer 0 -1
 ```
 
 - [ ] Locate the the customer you created in the output
+    - FIXME: This isn't currently working (no output in Redis)
 
 - [ ] In another terminal run this command to start monitoring the kafka topic:
 
