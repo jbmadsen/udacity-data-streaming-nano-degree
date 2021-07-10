@@ -1,3 +1,7 @@
 *.log
 *.jar
 cache
+
+# Include these (negate gitignore)
+!spark-master.log
+!spark-worker.log

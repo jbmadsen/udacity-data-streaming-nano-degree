@@ -111,14 +111,14 @@ The application development team was not able to complete the feature as the gra
 
 ![Empty Graph](images/empty_graph.png)
 
-- [ ] Spark master and worker run as part of the docker-compose configuration
+- [x] Spark master and worker run as part of the docker-compose configuration
 
-- [ ] Save the Spark startup logs for submission with your solution using the commands below:
+- [x] Save the Spark startup logs for submission with your solution using the commands below:
 
 ```
-docker logs nd029-c2-apache-spark-and-spark-streaming_spark_1 >& ../../spark/logs/spark-master.log
+docker logs project-2-evaluate_human_balance_spark_1 >& ./spark/logs/spark-master.log
 
-docker logs nd029-c2-apache-spark-and-spark-streaming_spark_1 >& ../../spark/logs/spark-master.log >& ../../spark/logs/spark-worker.log
+docker logs project-2-evaluate_human_balance_spark-worker-1_1 >& ./spark/logs/spark-worker.log
 ```
 
 - [ ] Create a new Kafka topic to transmit the complete risk score with birth date, so the data can be viewed in the STEDI application graph
