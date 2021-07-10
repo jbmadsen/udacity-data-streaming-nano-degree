@@ -12,6 +12,9 @@ docker-compose up
 ```
 docker ps
 ```
+
+![Image](images/docker-ps.png)
+
 - [x] Log in to the STEDI application: http://localhost:4567
 
 - [x] Click Create New Customer, create a test customer and submit
