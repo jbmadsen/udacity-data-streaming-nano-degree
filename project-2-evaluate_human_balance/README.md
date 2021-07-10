@@ -35,11 +35,10 @@ docker exec -it project-2-evaluate_human_balance_redis_1 redis-cli
 - [x] Type:
 
 ```
-zrange customer 0 -1
+zrange Customer 0 -1
 ```
 
-- [ ] Locate the the customer you created in the output
-    - FIXME: This isn't currently working (no output in Redis)
+- [x] Locate the the customer you created in the output
 
 - [x] In another terminal run this command to start monitoring the kafka topic:
 
