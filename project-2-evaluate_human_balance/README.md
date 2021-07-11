@@ -121,37 +121,37 @@ docker logs project-2-evaluate_human_balance_spark_1 >& ./spark/logs/spark-maste
 docker logs project-2-evaluate_human_balance_spark-worker-1_1 >& ./spark/logs/spark-worker.log
 ```
 
-- [ ] Create a new Kafka topic to transmit the complete risk score with birth date, so the data can be viewed in the STEDI application graph
+- [x] Create a new Kafka topic to transmit the complete risk score with birth date, so the data can be viewed in the STEDI application graph
 
-- [ ] Edit `docker-compose.yaml` and set the the name of the newly created topic:
+- [x] Edit `docker-compose.yaml` and set the the name of the newly created topic:
 
 ```
 KAFKA_RISK_TOPIC: ______
 ```
 
-- [ ] From the terminal running the docker-composer output, stop the docker containers:
+- [x] From the terminal running the docker-composer output, stop the docker containers:
 ```
 CTRL+C
 ```
 
-- [ ] Wait until they all stop
+- [x] Wait until they all stop
 
-- [ ] Start the docker containers once again:
+- [x] Start the docker containers once again:
 
 ```
 docker-compose up
 ```
 
-- [ ] Log in to the STEDI application: http://localhost:4567
+- [x] Log in to the STEDI application: http://localhost:4567
 
-- [ ] From the timer page, use the toggle button in the upper right corner to activate simulated user data to see real-time customer and risk score data. Toggle off and on to create additional customers for redis events. Each time you activate it, STEDI creates 30 new customers, and then starts generating risk scores for each one. It takes 4 minutes for each customer to have risk scores generated, however customer data is generated immediately. 
+- [x] From the timer page, use the toggle button in the upper right corner to activate simulated user data to see real-time customer and risk score data. Toggle off and on to create additional customers for redis events. Each time you activate it, STEDI creates 30 new customers, and then starts generating risk scores for each one. It takes 4 minutes for each customer to have risk scores generated, however customer data is generated immediately. 
 
 ![Toggle Switch](images/toggle_simulation.png)
 
-- [ ] To monitor the progress of data generated, from a terminal type: 
+- [x] To monitor the progress of data generated, from a terminal type: 
 
 ```
-docker logs -f nd029-c2-apache-spark-and-spark-streaming_stedi_1
+docker logs -f project-2-evaluate_human_balance_stedi_1
 ```
 
 
