@@ -162,10 +162,11 @@ docker logs -f project-2-evaluate_human_balance_stedi_1
     - [ ] New Topic: Write a spark script `sparkpykafkajoin.py` to join the customer dataframe and the customer risk dataframes, joining on the email address. Create a JSON output to the newly created kafka topic you configured for STEDI to subscribe to that contains at least the fields below:
 
 ```json
-{"customer":"Santosh.Fibonnaci@test.com",
- "score":"28.5",
- "email":"Santosh.Fibonnaci@test.com",
- "birthYear":"1963"
+{
+    "customer":"Santosh.Fibonnaci@test.com",
+    "score":"28.5",
+    "email":"Santosh.Fibonnaci@test.com",
+    "birthYear":"1963"
 } 
 ```
 
