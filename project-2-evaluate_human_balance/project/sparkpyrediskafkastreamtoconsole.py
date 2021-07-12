@@ -1,8 +1,38 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import from_json, to_json, col, unbase64, base64, split, expr
-from pyspark.sql.types import StructField, StructType, StringType, BooleanType, ArrayType, DateType
+from pyspark.sql.types import StructField, StructType, StringType, BooleanType, ArrayType, DateType, DoubleType
 
 # TODO: create a StructType for the Kafka redis-server topic which has all changes made to Redis - before Spark 3.0.0, schema inference is not automatic
+#
+# Schema, example:
+# {
+#     "key":"__Q3VzdG9tZXI=__",
+#     "existType":"NONE",
+#     "Ch":false,
+#     "Incr":false,
+#     "zSetEntries":[{
+#         "element":"__eyJjdXN0b21lck5hbWUiOiJTYW0gVGVzdCIsImVtYWlsIjoic2FtLnRlc3RAdGVzdC5jb20iLCJwaG9uZSI6IjgwMTU1NT# EyMTIiLCJiaXJ0aERheSI6IjIwMDEtMDEtMDMifQ==__",
+#         "Score":0.0
+#     }],
+#     "zsetEntries":[{
+#         "element":"eyJjdXN0b21lck5hbWUiOiJTYW0gVGVzdCIsImVtYWlsIjoic2FtLnRlc3RAdGVzdC5jb20iLCJwaG9uZSI6IjgwMTU1NTEy# MTIiLCJiaXJ0aERheSI6IjIwMDEtMDEtMDMifQ==",
+#         "score":0.0
+#     }]
+# }
+redis_server_topic_schema = StructType(
+    [
+        StructField("key", StringType()),
+        StructField("existType", StringType()),
+        StructField("Ch", BooleanType()),
+        StructField("Incr", BooleanType()),
+        StructField("zSetEntries", ArrayType( \
+            StructType([
+                StructField("element", StringType()), \
+                StructField("score", DoubleType()) \
+            ]) \
+        )), \
+    ]
+)
 
 # TODO: create a StructType for the Customer JSON that comes from Redis- before Spark 3.0.0, schema inference is not automatic
 

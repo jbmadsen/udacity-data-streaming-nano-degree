@@ -63,18 +63,19 @@ zadd Customer 0 "{\"customerName\":\"Sam Test\",\"email\":\"sam.test@test.com\",
 
 Formatted version of the payload:
 ```json
-{"key":"__Q3VzdG9tZXI=__",
-"existType":"NONE",
-"Ch":false,
-"Incr":false,
-"zSetEntries":[{
-"element":"__eyJjdXN0b21lck5hbWUiOiJTYW0gVGVzdCIsImVtYWlsIjoic2FtLnRlc3RAdGVzdC5jb20iLCJwaG9uZSI6IjgwMTU1NTEyMTIiLCJiaXJ0aERheSI6IjIwMDEtMDEtMDMifQ==__",
-"Score":0.0
-}],
-"zsetEntries":[{
-"element":"eyJjdXN0b21lck5hbWUiOiJTYW0gVGVzdCIsImVtYWlsIjoic2FtLnRlc3RAdGVzdC5jb20iLCJwaG9uZSI6IjgwMTU1NTEyMTIiLCJiaXJ0aERheSI6IjIwMDEtMDEtMDMifQ==",
-"score":0.0
-}]
+{
+    "key":"__Q3VzdG9tZXI=__",
+    "existType":"NONE",
+    "Ch":false,
+    "Incr":false,
+    "zSetEntries":[{
+        "element":"__eyJjdXN0b21lck5hbWUiOiJTYW0gVGVzdCIsImVtYWlsIjoic2FtLnRlc3RAdGVzdC5jb20iLCJwaG9uZSI6IjgwMTU1NTEyMTIiLCJiaXJ0aERheSI6IjIwMDEtMDEtMDMifQ==__",
+        "Score":0.0
+    }],
+    "zsetEntries":[{
+        "element":"eyJjdXN0b21lck5hbWUiOiJTYW0gVGVzdCIsImVtYWlsIjoic2FtLnRlc3RAdGVzdC5jb20iLCJwaG9uZSI6IjgwMTU1NTEyMTIiLCJiaXJ0aERheSI6IjIwMDEtMDEtMDMifQ==",
+        "score":0.0
+    }]
 }
 ```
 
