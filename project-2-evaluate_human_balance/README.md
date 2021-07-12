@@ -101,9 +101,10 @@ Both the key and the zSetEntries fields contain data that is base64 encoded. If 
 The application development team has programmed certain business events to be published automatically to Kafka. Whenever a customer takes an assessment, their risk score is generated, as long as they have four or more completed assessments. The risk score is transmitted to a Kafka topic called `stedi-events`. The `stedi-events` Kafka topic has a String key and a String value as a JSON object with this format:
 
 ```json
-{"customer":"Jason.Mitra@test.com",
-"score":7.0,
-"riskDate":"2020-09-14T07:54:06.417Z"
+{
+    "customer":"Jason.Mitra@test.com",
+    "score":7.0,
+    "riskDate":"2020-09-14T07:54:06.417Z"
 }
 ```
 
