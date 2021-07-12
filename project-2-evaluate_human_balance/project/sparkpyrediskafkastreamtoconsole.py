@@ -4,7 +4,7 @@ from pyspark.sql.types import StructField, StructType, StringType, BooleanType, 
 
 # TODO: create a StructType for the Kafka redis-server topic which has all changes made to Redis - before Spark 3.0.0, schema inference is not automatic
 #
-# Schema, example:
+# Schema, example (from README):
 # {
 #     "key":"__Q3VzdG9tZXI=__",
 #     "existType":"NONE",
@@ -35,17 +35,57 @@ redis_server_topic_schema = StructType(
 )
 
 # TODO: create a StructType for the Customer JSON that comes from Redis- before Spark 3.0.0, schema inference is not automatic
+#
+# Schema, example (from sparkkafkajoin.py):
+# {
+#   "customerName":"Sam Test",
+#   "email":"sam.test@test.com",
+#   "phone":"8015551212",
+#   "birthDay":"2001-01-03"
+# }
+customer_schema = StructType(
+    [
+        StructField("customerName", StringType()),
+        StructField("email", StringType()),
+        StructField("phone", StringType()),
+        StructField("birthDay", StringType())
+    ]
+)
 
 # TODO: create a StructType for the Kafka stedi-events topic which has the Customer Risk JSON that comes from Redis- before Spark 3.0.0, schema inference is not automatic
+#
+# Schema, example (from README):
+# {
+#     "customer":"Jason.Mitra@test.com",
+#     "score":7.0,
+#     "riskDate":"2020-09-14T07:54:06.417Z"
+# }
+customer_risk_schema = StructType(
+    [
+        StructField("customer", StringType()),
+        StructField("score", DoubleType()),
+        StructField("riskDate", DateType())
+    ]
+)
 
 # TODO: create a spark application object
+spark = SparkSession.builder.appName("customer-data").getOrCreate()
 
 # TODO: set the spark log level to WARN
+spark.sparkContext.setLogLevel('WARN')
 
 # TODO: using the spark application object, read a streaming dataframe from the Kafka topic redis-server as the source
 # Be sure to specify the option that reads all the events from the topic including those that were published before you started the spark stream
+redis_server_stream = spark \
+    .readStream \
+    .format("kafka") \
+    .option("kafka.bootstrap.servers", "localhost:9092") \
+    .option("subscribe", "redis-server") \
+    .option("startingOffsets", "earliest") \
+    .load()
 
 # TODO: cast the value column in the streaming dataframe as a STRING 
+redis_server_stream = redis_server_stream.selectExpr("cast(value as string) value")
 
 # TODO:; parse the single column "value" with a json object in it, like this:
 # +------------+
