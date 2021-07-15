@@ -82,18 +82,19 @@ Formatted version of the payload:
 Both the key and the zSetEntries fields contain data that is base64 encoded. If you base64 decoded the above encoded data it would look like this:
 
 ```json
-{"key":"__Customer__",
-"existType":"NONE",
-"Ch":false,
-"Incr":false,
-"zSetEntries":[{
-"element":"__{"customerName":"Sam Test","email":"sam.test@test.com","phone":"8015551212","birthDay":"2001-01-03"}",
-"Score":0.0
-}__],
-"zsetEntries":[{
-"element":"{"customerName":"Sam Test","email":"sam.test@test.com","phone":"8015551212","birthDay":"2001-01-03"}",
-"score":0.0
-}]
+{
+    "key":"__Customer__",
+    "existType":"NONE",
+    "Ch":false,
+    "Incr":false,
+    "zSetEntries":[{
+        "element":"__{"customerName":"Sam Test","email":"sam.test@test.com","phone":"8015551212","birthDay":"2001-01-03"}",
+        "Score":0.0
+    }],
+    "zsetEntries":[{
+        "element":"{"customerName":"Sam Test","email":"sam.test@test.com","phone":"8015551212","birthDay":"2001-01-03"}",
+        "score":0.0
+    }]
 }
 ```
 
