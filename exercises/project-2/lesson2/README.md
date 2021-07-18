@@ -12,4 +12,3 @@
      - From the terminal type: 
      ```/home/workspace/submit-kakfaconsole.sh```
 - Watch the terminal for the values to scroll past
-    
