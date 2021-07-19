@@ -250,7 +250,13 @@ riskScoreByBirthYear = customerRiskStreamingDF.join(emailAndBirthYearStreamingDF
 # |Sarah.Clark@test.com| -4.0|Sarah.Clark@test.com|     1957|
 # +--------------------+-----+--------------------+---------+
 #
-# In this JSON Format {"customer":"Santosh.Fibonnaci@test.com","score":"28.5","email":"Santosh.Fibonnaci@test.com","birthYear":"1963"}
+# In this JSON Format 
+# {
+#   "customer":"Santosh.Fibonnaci@test.com",
+#   "score":"28.5",
+#   "email":"Santosh.Fibonnaci@test.com",
+#   "birthYear":"1963"
+# }
 # Note: Allmost copy/paste from exercise5-customer-record.py
 riskScoreByBirthYear \
     .selectExpr("CAST(customer AS STRING) AS key", "to_json(struct(*)) AS value") \
