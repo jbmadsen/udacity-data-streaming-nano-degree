@@ -233,7 +233,7 @@ customerRiskStreamingDF = spark.sql("""
 
 # TODO: join the streaming dataframes on the email address to get the risk score and the birth year in the same dataframe
 # Note: Allmost copy/paste from exercise7-current-country.py
-customers_risk_and_info_stream_df = customerRiskStreamingDF.join(emailAndBirthYearStreamingDF, expr("""
+riskScoreByBirthYear = customerRiskStreamingDF.join(emailAndBirthYearStreamingDF, expr("""
     customer = email
 """
 ))
@@ -252,7 +252,7 @@ customers_risk_and_info_stream_df = customerRiskStreamingDF.join(emailAndBirthYe
 #
 # In this JSON Format {"customer":"Santosh.Fibonnaci@test.com","score":"28.5","email":"Santosh.Fibonnaci@test.com","birthYear":"1963"}
 # Note: Allmost copy/paste from exercise5-customer-record.py
-customers_risk_and_info_stream_df \
+riskScoreByBirthYear \
     .selectExpr("CAST(customer AS STRING) AS key", "to_json(struct(*)) AS value") \
     .writeStream \
     .format("kafka") \
