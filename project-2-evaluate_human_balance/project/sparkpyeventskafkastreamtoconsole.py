@@ -48,6 +48,7 @@ stedi_events_stream = stedi_events_stream.selectExpr("cast(value as string) valu
 # +------------+-----+-----------+
 #
 # storing them in a temporary view called CustomerRisk
+# Note: We did something similar in exercise7-current-country.py
 stedi_events_stream \
     .withColumn("value", from_json("value", customer_risk_schema)) \
     .select(col('value.*')) \
