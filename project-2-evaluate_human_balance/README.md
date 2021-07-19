@@ -179,5 +179,5 @@ docker logs -f project-2-evaluate_human_balance_stedi_1
 
 ![Populated Graph](images/populated_graph.png)
 
-- [x] Upload at least two screenshots of the working graph to the screenshots workspace folder 
+- [x] Upload at least two screenshots of the working graph to the [screenshots workspace folder](./screenshots/README.md)
 
